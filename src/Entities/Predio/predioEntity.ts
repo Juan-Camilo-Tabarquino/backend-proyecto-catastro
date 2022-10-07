@@ -28,7 +28,6 @@ import { Terrenos } from "../Terreno/terrenoEntity";
     municipio: string;
 
     @OneToMany(() => Construcciones, (construcciones) => construcciones.predio )
-    @JoinColumn({name: 'Construcciones'})
     construcciones: Construcciones[];
 
     @OneToOne(() => Terrenos)

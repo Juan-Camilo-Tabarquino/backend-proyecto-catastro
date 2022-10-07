@@ -26,7 +26,6 @@ import { Predios } from "../Predio/predioEntity";
     tipo: string;
 
     @ManyToOne(() => Predios, (predios) => predios.construcciones)
-    @JoinColumn({name: 'numero_predio'})
     predio: Predios;
   
   }
