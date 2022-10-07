@@ -3,7 +3,12 @@ import {
     Column,
     PrimaryColumn,
     BaseEntity,
+    OneToOne,
+    JoinColumn,
+    OneToMany,
   } from "typeorm";
+import { Construcciones } from "../Construcciones/construccionEntity";
+import { Terrenos } from "../Terreno/terrenoEntity";
   
   @Entity()
   export class Predios extends BaseEntity {
@@ -21,5 +26,13 @@ import {
 
     @Column()
     municipio: string;
+
+    @OneToMany(() => Construcciones, (construcciones) => construcciones.predio )
+    @JoinColumn({name: 'Construcciones'})
+    construcciones: Construcciones[];
+
+    @OneToOne(() => Terrenos)
+    @JoinColumn()
+    terreno : Terrenos
   
   }
