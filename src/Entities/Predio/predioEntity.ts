@@ -8,6 +8,7 @@ import {
     OneToMany,
   } from "typeorm";
 import { Construcciones } from "../Construcciones/construccionEntity";
+import { Propietarios } from "../Propietario/propietarioEntity";
 import { Terrenos } from "../Terreno/terrenoEntity";
   
   @Entity()
@@ -29,6 +30,9 @@ import { Terrenos } from "../Terreno/terrenoEntity";
 
     @OneToMany(() => Construcciones, (construcciones) => construcciones.predio )
     construcciones: Construcciones[];
+
+    @OneToMany(() => Propietarios, (propietarios) => propietarios.predio )
+    propietarios: Propietarios[];
 
     @OneToOne(() => Terrenos)
     @JoinColumn()

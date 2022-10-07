@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { Predios, Terrenos, Construcciones } from "./Entities";
+import { Predios, Terrenos, Construcciones, Propietarios } from "./Entities";
 
 export const AppDataSource = new DataSource({
     type: 'postgres',
@@ -8,7 +8,7 @@ export const AppDataSource = new DataSource({
     password: '123',
     port: 5432,
     database: 'Proyecto_Catastro',
-    entities: [Predios,Construcciones,Terrenos],
+    entities: [Predios,Construcciones,Terrenos,Propietarios],
     synchronize: true,
     ssl: false,
     //logging: true,
