@@ -1,4 +1,5 @@
 import { DataSource } from "typeorm";
+import { Predios } from "./Entities";
 
 export const AppDataSource = new DataSource({
     type: 'postgres',
@@ -7,6 +8,8 @@ export const AppDataSource = new DataSource({
     password: '123',
     port: 5432,
     database: 'Proyecto_Catastro',
-    entities: [],
-    logging: true,
+    entities: [Predios],
+    synchronize: true,
+    ssl: false,
+    //logging: true,
 })

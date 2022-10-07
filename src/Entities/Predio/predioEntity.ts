@@ -3,27 +3,23 @@ import {
     Column,
     PrimaryColumn,
     BaseEntity,
-    CreateDateColumn,
-    UpdateDateColumn,
   } from "typeorm";
   
   @Entity()
-  export class Predio extends BaseEntity {
+  export class Predios extends BaseEntity {
     @PrimaryColumn()
     numero_predial: number;
   
     @Column()
-    firstname: string;
+    avaluo: number;
   
     @Column()
-    lastname: string;
+    nombre: string;
   
-    @Column({ default: true })
-    active: boolean;
+    @Column()
+    departamento: string;
+
+    @Column()
+    municipio: string;
   
-    @CreateDateColumn()
-    createdAt: Date;
-  
-    @UpdateDateColumn()
-    updatedAt: Date;
   }
