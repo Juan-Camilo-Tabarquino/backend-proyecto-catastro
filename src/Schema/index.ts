@@ -1,7 +1,6 @@
 import { GraphQLObjectType, GraphQLSchema } from "graphql";
+import { CREATE_PREDIO } from "./Mutations";
 import { GREETING } from "./Queries";
-// import { GET_ALL_USERS, GET_USER } from "./Queries/User";
-// import { CREATE_USER, DELETE_USER, UPDATE_USER } from "./Mutations/User";
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQuery",
@@ -10,16 +9,16 @@ const RootQuery = new GraphQLObjectType({
   },
 });
 
-// const Mutation = new GraphQLObjectType({
-//   name: "Mutation",
-//   fields: {
-//     createUser: CREATE_USER,
-//     deleteUser: DELETE_USER,
-//     updateUser: UPDATE_USER,
-//   },
-// });
+const Mutation = new GraphQLObjectType({
+  name: "Mutation",
+  fields: {
+    createPredio: CREATE_PREDIO,
+    // deleteUser: DELETE_USER,
+    // updateUser: UPDATE_USER,
+  },
+});
 
 export const schema = new GraphQLSchema({
   query: RootQuery,
-  //mutation: Mutation,
+  mutation: Mutation,
 });

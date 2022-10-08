@@ -3,7 +3,10 @@ import {
     Column,
     PrimaryGeneratedColumn,
     BaseEntity,
+    OneToOne,
+    JoinColumn,
   } from "typeorm";
+import { Predios } from "../Predio/predioEntity";
   
   @Entity()
   export class Terrenos extends BaseEntity {
@@ -24,5 +27,9 @@ import {
 
     @Column()
     construcciones: string;
+
+    @OneToOne(() => Predios)
+    @JoinColumn()
+    predio : Predios
   
   }

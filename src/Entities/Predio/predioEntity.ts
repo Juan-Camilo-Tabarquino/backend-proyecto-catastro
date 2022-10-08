@@ -3,13 +3,10 @@ import {
     Column,
     PrimaryColumn,
     BaseEntity,
-    OneToOne,
-    JoinColumn,
     OneToMany,
   } from "typeorm";
 import { Construcciones } from "../Construcciones/construccionEntity";
 import { Propietarios } from "../Propietario/propietarioEntity";
-import { Terrenos } from "../Terreno/terrenoEntity";
   
   @Entity()
   export class Predios extends BaseEntity {
@@ -33,9 +30,5 @@ import { Terrenos } from "../Terreno/terrenoEntity";
 
     @OneToMany(() => Propietarios, (propietarios) => propietarios.predio )
     propietarios: Propietarios[];
-
-    @OneToOne(() => Terrenos)
-    @JoinColumn()
-    terreno : Terrenos
   
   }
