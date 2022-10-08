@@ -3,18 +3,12 @@ import {
     GraphQLID,
     GraphQLInputObjectType,
     GraphQLInt,
-    GraphQLList,
     GraphQLNonNull,
-    GraphQLObjectType,
     GraphQLString,
-    graphqlSync,
   } from "graphql";
 import { Predios } from "../../Entities";
 import { PredioType } from "../TypeDef";
-
-
-//   import { MessageType } from "../TypeDefs/Message";
-//   import { UserType } from "../TypeDefs/User";
+import { MessageType } from "../TypeDef/message";
   
   export const CREATE_PREDIO = {
     type: PredioType,
@@ -52,4 +46,33 @@ import { PredioType } from "../TypeDef";
     },
   };
 
-  export const UPDATE_USER = {};
+  export const UPDATE_PREDIO = {
+    type: MessageType,
+    args: {
+      numero_predial: { type: new GraphQLNonNull(GraphQLID) },
+      input: {
+        type: new GraphQLInputObjectType({
+          name:"input",
+          fields: {
+            avaluo: { type: GraphQLInt },
+            nombre: { type: GraphQLString },
+          }
+        })
+      }
+    },
+    async resolve(_: any, {numero_predial,input}: any) {
+      const predioFound = await Predios.findOne(numero_predial)
+
+      if(predioFound!) return {
+        success: false,
+        message: "El predio que intenta actualizar no se encuentra"
+      }
+
+      const result = await Predios.update({numero_predial},{avaluo: input.avaluo, nombre: input.nombre})
+      console.log(result)
+      return {
+        success: true,
+        message: "El predio ha sido actualizado correctamente"
+      }
+    }
+  };

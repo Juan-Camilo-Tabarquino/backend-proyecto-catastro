@@ -7,7 +7,8 @@ import {
          DELETE_CONSTRUCCION, 
          DELETE_PREDIO, 
          DELETE_PROPIETARIO, 
-         DELETE_TERRENO 
+         DELETE_TERRENO, 
+         UPDATE_PREDIO
         
         } from "./Mutations";
 import { GET_ALL_PREDIOS, GET_ALL_TERRENOS, GET_ALL_PROPIETARIOS, GET_ALL_CONSTRUCCIONES } from "./Queries";
@@ -35,6 +36,7 @@ const Mutation = new GraphQLObjectType({
     // Mutaciones Predio
     createPredio: CREATE_PREDIO,
     deletePredio: DELETE_PREDIO,
+    updatePredio: UPDATE_PREDIO,
 
     //Mutaciones Terreno
     createTerreno: CREATE_TERRENO,
