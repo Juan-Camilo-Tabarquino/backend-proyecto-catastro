@@ -8,7 +8,10 @@ import {
          DELETE_PREDIO, 
          DELETE_PROPIETARIO, 
          DELETE_TERRENO, 
-         UPDATE_PREDIO
+         UPDATE_CONSTRUCCION, 
+         UPDATE_PREDIO,
+         UPDATE_PROPIETARIO,
+         UPDATE_TERRENO
         
         } from "./Mutations";
 import { GET_ALL_PREDIOS, GET_ALL_TERRENOS, GET_ALL_PROPIETARIOS, GET_ALL_CONSTRUCCIONES } from "./Queries";
@@ -41,14 +44,17 @@ const Mutation = new GraphQLObjectType({
     //Mutaciones Terreno
     createTerreno: CREATE_TERRENO,
     deleteTerreno: DELETE_TERRENO,
+    updateTerreno: UPDATE_TERRENO,
 
     //Mutaciones Construcciones
     createConstruccion: CREATE_CONSTRUCCION,
     deleteConstruccion: DELETE_CONSTRUCCION,
+    updateConstruccion: UPDATE_CONSTRUCCION,
 
     //Mutaciones Propietarios
     createPropietario: CREATE_PROPIETARIO,
     deletePropietario: DELETE_PROPIETARIO,
+    updatePropietario: UPDATE_PROPIETARIO,
 
   },
 });

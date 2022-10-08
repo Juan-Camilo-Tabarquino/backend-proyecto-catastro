@@ -11,6 +11,7 @@ import {
   } from "graphql";
 import { Propietarios } from "../../Entities";
 import { PropietarioType } from "../TypeDef";
+import { MessageType } from "../TypeDef/message";
 
 
 //   import { MessageType } from "../TypeDefs/Message";
@@ -60,4 +61,44 @@ import { PropietarioType } from "../TypeDef";
       if (result.affected! > 0) return true;
       return false;
     },
+  };
+
+  export const UPDATE_PROPIETARIO = {
+    type: MessageType,
+    args: {
+      id: { type: GraphQLID },
+      telefono: { type: GraphQLInt },
+      direccion: { type: GraphQLString },
+      email: { type: GraphQLString},
+      tipo_documento: { type: GraphQLString},
+      numero_documento: { type: GraphQLString},
+      nombre: { type: GraphQLString},
+      apellidos: { type: GraphQLString},
+      razon_social: { type: GraphQLString},
+      nit: { type: GraphQLInt},
+    },
+    async resolve(_: any, args: any) {
+      const { id, telefono, direccion, email, numero_documento, nombre, apellidos, tipo_documento, razon_social, nit } = args;
+
+      const result = await Propietarios.update({id: parseInt(id)},{
+
+        telefono,
+        direccion,
+        email,
+        nombre,
+        apellidos,
+        tipo_documento,
+        razon_social,
+        nit,
+        numero_documento
+
+      });
+      
+      if(result.affected === 0) return { success: false, message:"Error durante la actualizacion"}
+      
+      return {
+        success: true,
+        message: "El Propietario ha sido actualizado correctamente"
+      }
+    }
   };

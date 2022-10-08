@@ -11,6 +11,7 @@ import {
   } from "graphql";
 import { Terrenos } from "../../Entities";
 import { TerrenoType } from "../TypeDef";
+import { MessageType } from "../TypeDef/message";
   
   export const CREATE_TERRENO = {
     type: TerrenoType,
@@ -48,4 +49,27 @@ import { TerrenoType } from "../TypeDef";
       if (result.affected! > 0) return true;
       return false;
     },
+  };
+
+  export const UPDATE_TERRENO = {
+    type: MessageType,
+    args: {
+      id: { type: GraphQLID },
+      area: { type: GraphQLInt },
+      valor_comercial: { type: GraphQLInt },
+      construcciones: { type: GraphQLString},
+      fuentes_agua: { type: GraphQLString},
+    },
+    async resolve(_: any, args: any) {
+      const { id, area, valor_comercial, construcciones, fuentes_agua } = args;
+
+      const result = await Terrenos.update({id: parseInt(id)},{area: area, valor_comercial: valor_comercial, construcciones: construcciones, fuentes_agua: fuentes_agua});
+      
+      if(result.affected === 0) return { success: false, message:"Error durante la actualizacion"}
+      
+      return {
+        success: true,
+        message: "El Terreno ha sido actualizado correctamente"
+      }
+    }
   };
