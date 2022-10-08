@@ -1,6 +1,5 @@
 import { GraphQLObjectType, GraphQLSchema } from "graphql";
-import { CREATE_PREDIO } from "./Mutations";
-import { CREATE_TERRENO } from "./Mutations/terreno";
+import { CREATE_CONSTRUCCION, CREATE_PREDIO, CREATE_TERRENO } from "./Mutations";
 import { GREETING } from "./Queries";
 
 const RootQuery = new GraphQLObjectType({
@@ -15,6 +14,7 @@ const Mutation = new GraphQLObjectType({
   fields: {
     createPredio: CREATE_PREDIO,
     createTerreno: CREATE_TERRENO,
+    createConstruccion: CREATE_CONSTRUCCION
     // deleteUser: DELETE_USER,
     // updateUser: UPDATE_USER,
   },

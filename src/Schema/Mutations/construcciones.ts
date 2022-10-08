@@ -9,28 +9,26 @@ import {
     GraphQLString,
     graphqlSync,
   } from "graphql";
-import { Terrenos } from "../../Entities";
-import { TerrenoType } from "../TypeDef";
+import { Construcciones } from "../../Entities";
+import { ConstruccionType } from "../TypeDef";
   
-  export const CREATE_TERRENO = {
-    type: TerrenoType,
+  export const CREATE_CONSTRUCCION = {
+    type: ConstruccionType,
     args: {
         area: { type: new GraphQLNonNull(GraphQLInt) },
-        valor_comercial: { type: new GraphQLNonNull(GraphQLInt) },
+        num_pisos: { type: new GraphQLNonNull(GraphQLInt) },
         tipo: { type: new GraphQLNonNull(GraphQLString) },
-        construcciones: { type: new GraphQLNonNull(GraphQLString) },
-        fuentes_agua: { type: new GraphQLNonNull(GraphQLString) },
+        direccion: { type: new GraphQLNonNull(GraphQLString) },
         predio: { type: new GraphQLNonNull(GraphQLID) },
     },
     async resolve(parent: any, args: any) {
-      const { area, valor_comercial, tipo, construcciones, fuentes_agua, predio } = args;
+      const { area, direccion, tipo, num_pisos, predio } = args;
   
-      const result = await Terrenos.insert({
+      const result = await Construcciones.insert({
         area,
         tipo,
-        valor_comercial,
-        construcciones,
-        fuentes_agua,
+        num_pisos,
+        direccion,
         predio,
       });
   
