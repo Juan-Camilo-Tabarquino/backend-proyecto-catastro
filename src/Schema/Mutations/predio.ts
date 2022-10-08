@@ -56,7 +56,7 @@ import { MessageType } from "../TypeDef/message";
     async resolve(_: any, args: any) {
       const { numero_predial, avaluo, nombre } = args;
 
-      const result = await Predios.update({numero_predial},{avaluo: avaluo, nombre: nombre});
+      const result = await Predios.update({numero_predial: parseInt(numero_predial)},{avaluo: avaluo, nombre: nombre});
       
       if(result.affected === 0) return { success: false, message:"Error durante la actualizacion"}
       
