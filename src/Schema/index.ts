@@ -1,5 +1,15 @@
 import { GraphQLObjectType, GraphQLSchema } from "graphql";
-import { CREATE_CONSTRUCCION, CREATE_PREDIO, CREATE_PROPIETARIO, CREATE_TERRENO } from "./Mutations";
+import { 
+         CREATE_CONSTRUCCION, 
+         CREATE_PREDIO, 
+         CREATE_PROPIETARIO, 
+         CREATE_TERRENO, 
+         DELETE_CONSTRUCCION, 
+         DELETE_PREDIO, 
+         DELETE_PROPIETARIO, 
+         DELETE_TERRENO 
+        
+        } from "./Mutations";
 import { GET_ALL_PREDIOS, GET_ALL_TERRENOS, GET_ALL_PROPIETARIOS, GET_ALL_CONSTRUCCIONES } from "./Queries";
 
 const RootQuery = new GraphQLObjectType({
@@ -24,15 +34,19 @@ const Mutation = new GraphQLObjectType({
   fields: {
     // Mutaciones Predio
     createPredio: CREATE_PREDIO,
+    deletePredio: DELETE_PREDIO,
 
     //Mutaciones Terreno
     createTerreno: CREATE_TERRENO,
+    deleteTerreno: DELETE_TERRENO,
 
     //Mutaciones Construcciones
     createConstruccion: CREATE_CONSTRUCCION,
+    deleteConstruccion: DELETE_CONSTRUCCION,
 
     //Mutaciones Propietarios
     createPropietario: CREATE_PROPIETARIO,
+    deletePropietario: DELETE_PROPIETARIO,
 
   },
 });

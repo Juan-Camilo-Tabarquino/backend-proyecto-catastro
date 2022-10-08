@@ -35,3 +35,15 @@ import { ConstruccionType } from "../TypeDef";
       return { ...args, id: result.identifiers[0].id };
     },
   };
+
+  export const DELETE_CONSTRUCCION = {
+    type: GraphQLBoolean,
+    args: {
+      id: { type: new GraphQLNonNull(GraphQLID) },
+    },
+    async resolve(_: any, { id }: any) {
+      const result = await Construcciones.delete({ id });
+      if (result.affected! > 0) return true;
+      return false;
+    },
+  };

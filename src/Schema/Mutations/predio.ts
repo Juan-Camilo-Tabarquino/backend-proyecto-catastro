@@ -40,24 +40,16 @@ import { PredioType } from "../TypeDef";
     },
   };
   
-//   export const DELETE_PREDIO = {
-//     type: GraphQLBoolean,
-//     args: {
-//       id: { type: new GraphQLNonNull(GraphQLID) },
-//     },
-//     async resolve(_: any, { id }: any) {
-//       const result = await Users.delete({ id });
-//       if (result.affected! > 0) return true;
-//       return false;
-//     },
-//   };
-  
-
-// : { type: GraphQLID},
-// avaluo: { type: GraphQLInt},
-// nombre: { type: GraphQLInt},
-// departamento: { type: GraphQLString},
-// municipio: { type: GraphQLString},
-// terrenoId: { type: GraphQLInt},
+  export const DELETE_PREDIO = {
+    type: GraphQLBoolean,
+    args: {
+      numero_predial: { type: new GraphQLNonNull(GraphQLID) },
+    },
+    async resolve(_: any, { numero_predial }: any) {
+      const result = await Predios.delete({ numero_predial });
+      if (result.affected! > 0) return true;
+      return false;
+    },
+  };
 
   export const UPDATE_USER = {};
