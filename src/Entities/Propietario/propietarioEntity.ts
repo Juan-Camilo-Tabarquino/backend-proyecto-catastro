@@ -21,9 +21,6 @@ import { Predios } from "../Predio/predioEntity";
     @Column()
     direccion: string;
 
-    @Column()
-    tipo: string;
-
     @Column({nullable: true})
     tipo_documento: string;
 
