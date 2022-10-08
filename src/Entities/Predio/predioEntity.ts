@@ -28,7 +28,7 @@ import { Propietarios } from "../Propietario/propietarioEntity";
     @OneToMany(() => Construcciones, (construcciones) => construcciones.predio )
     construcciones: Construcciones[];
 
-    @OneToMany(() => Propietarios, (propietarios) => propietarios.predio )
+    @OneToMany(() => Propietarios, (propietarios) => propietarios.predio, { onDelete: 'CASCADE' } )
     propietarios: Propietarios[];
   
   }
