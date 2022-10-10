@@ -4,6 +4,7 @@ import {
     PrimaryGeneratedColumn,
     BaseEntity,
     ManyToOne,
+    JoinColumn,
   } from "typeorm";
 import { Predios } from "../Predio/predioEntity";
   
@@ -40,6 +41,8 @@ import { Predios } from "../Predio/predioEntity";
     razon_social: string;
 
     @ManyToOne(() => Predios, (predios) => predios.construcciones)
+    @JoinColumn({name: 'predio'})
+    @Column('int')
     predio: Predios;
   
   }
