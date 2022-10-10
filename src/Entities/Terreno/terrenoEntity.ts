@@ -29,7 +29,8 @@ import { Predios } from "../Predio/predioEntity";
     construcciones: string;
 
     @OneToOne(() => Predios)
-    @JoinColumn()
+    @JoinColumn({ name: "predio" })
+    @Column()
     predio : Predios
   
   }
