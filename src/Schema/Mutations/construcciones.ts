@@ -1,13 +1,9 @@
 import {
     GraphQLBoolean,
     GraphQLID,
-    GraphQLInputObjectType,
     GraphQLInt,
-    GraphQLList,
     GraphQLNonNull,
-    GraphQLObjectType,
     GraphQLString,
-    graphqlSync,
   } from "graphql";
 import { Construcciones } from "../../Entities";
 import { ConstruccionType } from "../TypeDef";
@@ -20,7 +16,7 @@ import { MessageType } from "../TypeDef/message";
         num_pisos: { type: new GraphQLNonNull(GraphQLInt) },
         tipo: { type: new GraphQLNonNull(GraphQLString) },
         direccion: { type: new GraphQLNonNull(GraphQLString) },
-        predio: { type: new GraphQLNonNull(GraphQLID) },
+        predio: { type: new GraphQLNonNull(GraphQLInt) },
     },
     async resolve(parent: any, args: any) {
       const { area, direccion, tipo, num_pisos, predio } = args;

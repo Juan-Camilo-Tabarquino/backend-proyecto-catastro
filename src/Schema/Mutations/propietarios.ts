@@ -1,22 +1,14 @@
 import {
     GraphQLBoolean,
     GraphQLID,
-    GraphQLInputObjectType,
     GraphQLInt,
-    GraphQLList,
     GraphQLNonNull,
-    GraphQLObjectType,
     GraphQLString,
-    graphqlSync,
   } from "graphql";
 import { Propietarios } from "../../Entities";
 import { PropietarioType } from "../TypeDef";
 import { MessageType } from "../TypeDef/message";
 
-
-//   import { MessageType } from "../TypeDefs/Message";
-//   import { UserType } from "../TypeDefs/User";
-  
   export const CREATE_PROPIETARIO = {
     type: PropietarioType,
     args: {
@@ -29,7 +21,7 @@ import { MessageType } from "../TypeDef/message";
         apellidos: { type: GraphQLString },
         nit: { type: GraphQLInt },
         razon_social: { type: GraphQLString },
-        predio: { type: new GraphQLNonNull(GraphQLID) },
+        predio: { type: new GraphQLNonNull(GraphQLInt) },
     },
     async resolve(parent: any, args: any) {
       const { direccion,telefono,email,tipo_documento,numero_documento,nombre,apellidos,nit,razon_social,predio } = args;

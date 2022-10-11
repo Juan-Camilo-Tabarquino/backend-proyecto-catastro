@@ -1,13 +1,9 @@
 import {
     GraphQLBoolean,
     GraphQLID,
-    GraphQLInputObjectType,
     GraphQLInt,
-    GraphQLList,
     GraphQLNonNull,
-    GraphQLObjectType,
     GraphQLString,
-    graphqlSync,
   } from "graphql";
 import { Terrenos } from "../../Entities";
 import { TerrenoType } from "../TypeDef";
@@ -21,7 +17,7 @@ import { MessageType } from "../TypeDef/message";
         tipo: { type: new GraphQLNonNull(GraphQLString) },
         construcciones: { type: new GraphQLNonNull(GraphQLString) },
         fuentes_agua: { type: new GraphQLNonNull(GraphQLString) },
-        predio: { type: new GraphQLNonNull(GraphQLID) },
+        predio: { type: new GraphQLNonNull(GraphQLInt) },
     },
     async resolve(parent: any, args: any) {
       const { area, valor_comercial, tipo, construcciones, fuentes_agua, predio } = args;
