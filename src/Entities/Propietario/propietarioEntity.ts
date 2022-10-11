@@ -16,7 +16,7 @@ import { Predios } from "../Predio/predioEntity";
     @Column()
     telefono: number;
   
-    @Column()
+    @Column({nullable: true})
     email: string;
   
     @Column()
