@@ -46,7 +46,7 @@ import { MessageType } from "../TypeDef/message";
   export const DELETE_PROPIETARIO = {
     type: GraphQLBoolean,
     args: {
-      id: { type: new GraphQLNonNull(GraphQLID) },
+      id: { type: new GraphQLNonNull(GraphQLInt) },
     },
     async resolve(_: any, { id }: any) {
       const result = await Propietarios.delete({ id });
@@ -58,19 +58,20 @@ import { MessageType } from "../TypeDef/message";
   export const UPDATE_PROPIETARIO = {
     type: MessageType,
     args: {
-      id: { type: GraphQLID },
+      id: { type: GraphQLInt },
       telefono: { type: GraphQLInt },
       direccion: { type: GraphQLString },
       email: { type: GraphQLString},
       tipo_documento: { type: GraphQLString},
-      numero_documento: { type: GraphQLString},
+      numero_documento: { type: GraphQLInt},
       nombre: { type: GraphQLString},
       apellidos: { type: GraphQLString},
       razon_social: { type: GraphQLString},
       nit: { type: GraphQLInt},
+      predio: { type: GraphQLInt }
     },
     async resolve(_: any, args: any) {
-      const { id, telefono, direccion, email, numero_documento, nombre, apellidos, tipo_documento, razon_social, nit } = args;
+      const { id, telefono, direccion, email, numero_documento, nombre, apellidos, tipo_documento, razon_social, nit, predio } = args;
 
       const result = await Propietarios.update({id: parseInt(id)},{
 
@@ -82,8 +83,8 @@ import { MessageType } from "../TypeDef/message";
         tipo_documento,
         razon_social,
         nit,
-        numero_documento
-
+        numero_documento,
+        predio
       });
       
       if(result.affected === 0) return { success: false, message:"Error durante la actualizacion"}

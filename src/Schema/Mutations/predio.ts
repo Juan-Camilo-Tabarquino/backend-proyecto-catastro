@@ -36,7 +36,7 @@ import { MessageType } from "../TypeDef/message";
   export const DELETE_PREDIO = {
     type: GraphQLBoolean,
     args: {
-      numero_predial: { type: new GraphQLNonNull(GraphQLID) },
+      numero_predial: { type: new GraphQLNonNull(GraphQLInt) },
     },
     async resolve(_: any, { numero_predial }: any) {
       const result = await Predios.delete({ numero_predial });
@@ -48,7 +48,7 @@ import { MessageType } from "../TypeDef/message";
   export const UPDATE_PREDIO = {
     type: MessageType,
     args: {
-      numero_predial: { type: GraphQLID },
+      numero_predial: { type: GraphQLInt },
       avaluo: { type: GraphQLInt },
       nombre: { type: GraphQLString}
     },

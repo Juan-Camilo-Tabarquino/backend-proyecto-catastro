@@ -38,7 +38,7 @@ import { MessageType } from "../TypeDef/message";
   export const DELETE_TERRENO = {
     type: GraphQLBoolean,
     args: {
-      id: { type: new GraphQLNonNull(GraphQLID) },
+      id: { type: new GraphQLNonNull(GraphQLInt) },
     },
     async resolve(_: any, { id }: any) {
       const result = await Terrenos.delete({ id });
@@ -50,7 +50,7 @@ import { MessageType } from "../TypeDef/message";
   export const UPDATE_TERRENO = {
     type: MessageType,
     args: {
-      id: { type: GraphQLID },
+      id: { type: GraphQLInt },
       area: { type: GraphQLInt },
       valor_comercial: { type: GraphQLInt },
       construcciones: { type: GraphQLString},

@@ -36,7 +36,7 @@ import { MessageType } from "../TypeDef/message";
   export const DELETE_CONSTRUCCION = {
     type: GraphQLBoolean,
     args: {
-      id: { type: new GraphQLNonNull(GraphQLID) },
+      id: { type: new GraphQLNonNull(GraphQLInt) },
     },
     async resolve(_: any, { id }: any) {
       const result = await Construcciones.delete({ id });
@@ -48,7 +48,7 @@ import { MessageType } from "../TypeDef/message";
   export const UPDATE_CONSTRUCCION = {
     type: MessageType,
     args: {
-      id: { type: GraphQLID },
+      id: { type: GraphQLInt },
       area: { type: GraphQLInt },
       num_pisos: { type: GraphQLInt },
       direccion: { type: GraphQLString},
